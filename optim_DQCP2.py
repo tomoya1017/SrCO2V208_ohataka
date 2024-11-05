@@ -1,5 +1,5 @@
 #python optim_DQCP_old.py --tiling 1SITE --bond_dim 10 --seed 123 --Jz 1.4 --N 30 --CTMARGS_fwd_checkpoint_move --OPTARGS_tolerance_grad 1.0e-8 --out_prefix ex-mps_s30_chi10_jz14
-#python optim_DQCP2.py --tiling 2SITE --bond_dim 10 --seed 123 --J 3.7 --delta 2.1 --gx 3.7 --h 1.0  --N 8 --CTMARGS_fwd_checkpoint_move --OPTARGS_tolerance_grad 1.0e-8 --out_prefix ex-mps_s8_chi10_j1_h1
+#python optim_DQCP2.py --tiling 2SITE --bond_dim 10 --seed 123 --opt_max_iter 1000 --J 1.0 --delta 2.1 --gx 3.7 --h 0.0  --N 16 --CTMARGS_fwd_checkpoint_move --OPTARGS_tolerance_grad 1.0e-8 --out_prefix ex-mps_s16_chi10_j1_y_h0
 import context
 import scipy.io
 import torch
@@ -38,7 +38,7 @@ def main():
     torch.set_num_threads(args.omp_cores)
     torch.manual_seed(args.seed)
 
-    model = DQCP.DQCP(J=args.J, delta=args.delta, gx=3.7, bohr=5.79e-5, h=args.h, N=args.N)
+    model = DQCP.DQCP(J=args.J, delta=args.delta, gx=3.7, bohr=5.78e-5, h=args.h, N=args.N)
     # initialize an ipeps
     # 1) define lattice-tiling function, that maps arbitrary vertex of square lattice
     # coord into one of coordinates within unit-cell of iPEPS ansatz    
@@ -66,7 +66,7 @@ def main():
     #state = MPS(sites, vertexToSite=lattice_to_site)
     if args.instate!=None:
         state0 = read_ipeps(args.instate, vertexToSite=lattice_to_site)
-        sites = {(0): state0.sites[(0)]}
+        sites = {(0): state0.sites[(0)],(1):state0.sites[(1)]}
         state = MPS(sites, vertexToSite=lattice_to_site)
         print (state.sites[(0)])
         if args.bond_dim > max(state.get_aux_bond_dims()):

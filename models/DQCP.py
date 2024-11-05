@@ -7,7 +7,7 @@ from complex_num.complex_operation import *
 import itertools
 
 class DQCP():
-    def __init__(self, J, delta, gx, bohr, h, N=8, global_args=cfg.global_args):
+    def __init__(self, J, delta, gx, bohr, h, N, global_args=cfg.global_args):
         r"""
         :param j1: nearest-neighbour interaction
         :param j2: next nearest-neighbour interaction
@@ -46,7 +46,7 @@ class DQCP():
         self.bohr=bohr
         self.h=h
         self.hy=0.29 * self.h
-        self.hz=0.14 * self.h
+        # self.hz=0.14 * self.h
         self.N=N
         
         self.SSx, self.SSy, self.SSz, self.Sx, self.Sy, self.Sz, self.SS = self.get_h()
@@ -155,7 +155,7 @@ class DQCP():
                 E1 = mm_complex(E1,G_list_contract1)
             else:
                 E1 = mm_complex(E1,G_list_contract2)
-        E1*=(self.N/2)
+        # E1*=(self.N/2)
         theta = einsum_complex('ijk,lkm->ijlm',mps2,mps1)
         theta_O = einsum_complex('ijkl,kmln->imjn',(self.J*self.SSx+self.J*self.SSy+self.J*self.delta*self.SSz),theta)
         E2 = einsum_complex('ijkl,imkn->jmln',theta_O,complex_conjugate(theta))#.reshape(G_list[(j)%size].size()[1]**2,G_list[(j+1)%size].size()[2]**2)
@@ -165,8 +165,8 @@ class DQCP():
                 E2 = mm_complex(E2,G_list_contract1)
             else:
                 E2 = mm_complex(E2,G_list_contract2)
-        E2*=(self.N/2)
-        E_nn = (trace_complex(E1)+trace_complex(E2))/norm
+        # E2*=(self.N/2)
+        E_nn = (trace_complex(E1)+trace_complex(E2))/norm/2
 
         ############# next nearest exchange ##########
         # theta = einsum_complex('ijk,lkm->ijlm',mps2,mps1)
@@ -198,10 +198,12 @@ class DQCP():
 
         ########## onsite operator s^x ###########
 
-        theta_Ope_x1 = einsum_complex("ijk,il->ljk",mps1,self.bohr*self.gx*self.h*self.Sx)
+        # theta_Ope_x1 = einsum_complex("ijk,il->ljk",mps1,self.bohr*self.gx*self.h*self.Sx)
+        theta_Ope_x1 = einsum_complex("ijk,il->ljk",mps1,self.h*self.Sx)
         theta_Ope_x1 = einsum_complex("ijk,ilm->jlkm",theta_Ope_x1,complex_conjugate(mps1))
         Ex1 = view_complex((size_complex(mps1)[1]**2,size_complex(mps1)[2]**2), theta_Ope_x1)
-        theta_Ope_x2 = einsum_complex("ijk,il->ljk",mps2,self.bohr*self.gx*self.h*self.Sx)
+        # theta_Ope_x2 = einsum_complex("ijk,il->ljk",mps2,self.bohr*self.gx*self.h*self.Sx)
+        theta_Ope_x2 = einsum_complex("ijk,il->ljk",mps2,self.h*self.Sx)
         theta_Ope_x2 = einsum_complex("ijk,ilm->jlkm",theta_Ope_x2,complex_conjugate(mps2))
         Ex2 = view_complex((size_complex(mps2)[1]**2,size_complex(mps2)[2]**2), theta_Ope_x2)
         for i in range(1,self.N):
@@ -209,33 +211,37 @@ class DQCP():
                 Ex1 = mm_complex(Ex1,G_list_contract1)
             else:
                 Ex1 = mm_complex(Ex1,G_list_contract2)
-        Ex1*=self.N
+        # Ex1*=self.N
         for i in range(1,self.N):
             if i % 2 == 1:
                 Ex2 = mm_complex(Ex2,G_list_contract1)
             else:
                 Ex2 = mm_complex(Ex2,G_list_contract2)
-        Ex2*=self.N
-        E_x = (trace_complex(Ex1)+trace_complex(Ex2))/norm
+        # Ex2*=self.N
+        E_x = (trace_complex(Ex1)+trace_complex(Ex2))/norm/2
 
         ########## onsite operator s^y ###########
         # theta_Ope_y1 = einsum_complex("ijk,il->ljk",mps1,self.bohr*self.gx*self.hy*self.Sy)
-        # theta_Ope_y1 = einsum_complex("ijk,ilm->jlkm",theta_Ope_y1,complex_conjugate(mps1))
-        # Ey1 = view_complex((size_complex(mps1)[1]**2,size_complex(mps1)[2]**2), theta_Ope_y1)
+        theta_Ope_y1 = einsum_complex("ijk,il->ljk",mps1,self.hy*self.Sy)
+        theta_Ope_y1 = einsum_complex("ijk,ilm->jlkm",theta_Ope_y1,complex_conjugate(mps1))
+        Ey1 = view_complex((size_complex(mps1)[1]**2,size_complex(mps1)[2]**2), theta_Ope_y1)
         # theta_Ope_y2 = einsum_complex("ijk,il->ljk",mps2,-self.bohr*self.gx*self.hy*self.Sy)
-        # theta_Ope_y2 = einsum_complex("ijk,ilm->jlkm",theta_Ope_y2,complex_conjugate(mps2))
-        # Ey2 = view_complex((size_complex(mps2)[1]**2,size_complex(mps2)[2]**2), theta_Ope_y2)
-        # for i in range(1,self.N):
-        #     if i % 2 == 0:
-        #         Ey1 = mm_complex(Ey1,G_list_contract1)
-        #     else:
-        #         Ey1 = mm_complex(Ey1,G_list_contract2)
-        # for i in range(1,self.N):
-        #     if i % 2 == 1:
-        #         Ey2 = mm_complex(Ey2,G_list_contract1)
-        #     else:
-        #         Ey2 = mm_complex(Ey2,G_list_contract2)
-        # E_y = (trace_complex(Ey1)+trace_complex(Ey2))/norm/2
+        theta_Ope_y2 = einsum_complex("ijk,il->ljk",mps2,-self.hy*self.Sy)
+        theta_Ope_y2 = einsum_complex("ijk,ilm->jlkm",theta_Ope_y2,complex_conjugate(mps2))
+        Ey2 = view_complex((size_complex(mps2)[1]**2,size_complex(mps2)[2]**2), theta_Ope_y2)
+        for i in range(1,self.N):
+            if i % 2 == 0:
+                Ey1 = mm_complex(Ey1,G_list_contract1)
+            else:
+                Ey1 = mm_complex(Ey1,G_list_contract2)
+        # Ey1*=self.N
+        for i in range(1,self.N):
+            if i % 2 == 1:
+                Ey2 = mm_complex(Ey2,G_list_contract1)
+            else:
+                Ey2 = mm_complex(Ey2,G_list_contract2)
+        # Ey2*=self.N
+        E_y = (trace_complex(Ey1)+trace_complex(Ey2))/norm/2
 
         
 
@@ -279,7 +285,95 @@ class DQCP():
         #    E = mm_complex(E,G_list_contract)
         #E_s = trace_complex(E)/norm
 
-        return E_nn-(E_x)
+        return E_nn-(E_x+E_y)
+    
+
+    ############## spin order s^z for Ground_state #################
+    def energy_2x2_2site_sz_gs(self,A1,A2):
+        s2 = S2.S2(self.phys_dim, dtype=self.dtype, device=self.device)
+        mps1 = A1
+        mps2 = A2
+        
+        norm1 = torch.eye(size_complex(mps1)[2]**2,dtype=self.dtype,device=self.device)
+        norm2 = torch.zeros((size_complex(mps1)[2]**2,size_complex(mps1)[2]**2),dtype=self.dtype,device=self.device)
+        norm = torch.stack((norm1, norm2), dim=0)
+        G_list_contract1 = einsum_complex('ijk,imn->jmkn',mps1,complex_conjugate(mps1))#.reshape(G_list[j].size()[1]**2,G_list[j].size()[2]**2))
+        G_list_contract1 = view_complex((size_complex(mps1)[1]**2,size_complex(mps1)[2]**2), G_list_contract1)
+        G_list_contract2 = einsum_complex('ijk,imn->jmkn',mps2,complex_conjugate(mps2))#.reshape(G_list[j].size()[1]**2,G_list[j].size()[2]**2))
+        G_list_contract2 = view_complex((size_complex(mps2)[1]**2,size_complex(mps2)[2]**2), G_list_contract2)
+        for j in range(0,self.N):
+            if j % 2 == 0:
+                norm = mm_complex(norm,G_list_contract1)
+            else:
+                norm = mm_complex(norm,G_list_contract2)
+        norm = trace_complex(norm)
+        
+        theta = einsum_complex('ijk,lkm->ijlm',mps1,mps2)
+        theta_Ope_z1 = einsum_complex("ijk,il->ljk",mps1,s2.SZ())
+        theta_Ope_z1 = einsum_complex("ijk,ilm->jlkm",theta_Ope_z1,complex_conjugate(mps1))
+        order_1 = view_complex((size_complex(mps1)[1]**2,size_complex(mps1)[2]**2), theta_Ope_z1)
+        theta_Ope_z2 = einsum_complex("ijk,il->ljk",mps2,s2.SZ())
+        theta_Ope_z2 = einsum_complex("ijk,ilm->jlkm",theta_Ope_z2,complex_conjugate(mps2))
+        order_2 = view_complex((size_complex(mps2)[1]**2,size_complex(mps2)[2]**2), theta_Ope_z2)
+        for i in range(1,self.N):
+            if i % 2 == 0:
+                order_1 = mm_complex(order_1,G_list_contract1)
+            else:
+                order_1 = mm_complex(order_1,G_list_contract2)
+        # Ex1*=self.N
+        for i in range(1,self.N):
+            if i % 2 == 1:
+                order_2 = mm_complex(order_2,G_list_contract1)
+            else:
+                order_2 = mm_complex(order_2,G_list_contract2)
+        # Ex2*=self.N
+        order_z = (trace_complex(order_1)-trace_complex(order_2))/norm/2
+        print(f"S_A^z :{trace_complex(order_1)/norm}")
+        print(f"S_B^z :{trace_complex(order_2)/norm}")
+
+        return order_z
+    
+    def energy_2x2_2site_sx_gs(self,A1,A2):
+        s2 = S2.S2(self.phys_dim, dtype=self.dtype, device=self.device)
+        mps1 = A1
+        mps2 = A2
+        
+        norm1 = torch.eye(size_complex(mps1)[2]**2,dtype=self.dtype,device=self.device)
+        norm2 = torch.zeros((size_complex(mps1)[2]**2,size_complex(mps1)[2]**2),dtype=self.dtype,device=self.device)
+        norm = torch.stack((norm1, norm2), dim=0)
+        G_list_contract1 = einsum_complex('ijk,imn->jmkn',mps1,complex_conjugate(mps1))#.reshape(G_list[j].size()[1]**2,G_list[j].size()[2]**2))
+        G_list_contract1 = view_complex((size_complex(mps1)[1]**2,size_complex(mps1)[2]**2), G_list_contract1)
+        G_list_contract2 = einsum_complex('ijk,imn->jmkn',mps2,complex_conjugate(mps2))#.reshape(G_list[j].size()[1]**2,G_list[j].size()[2]**2))
+        G_list_contract2 = view_complex((size_complex(mps2)[1]**2,size_complex(mps2)[2]**2), G_list_contract2)
+        for j in range(0,self.N):
+            if j % 2 == 0:
+                norm = mm_complex(norm,G_list_contract1)
+            else:
+                norm = mm_complex(norm,G_list_contract2)
+        norm = trace_complex(norm)
+        
+        theta = einsum_complex('ijk,lkm->ijlm',mps1,mps2)
+        theta_Ope_x1 = einsum_complex("ijk,il->ljk",mps1,s2.SX().clone().detach())
+        theta_Ope_x1 = einsum_complex("ijk,ilm->jlkm",theta_Ope_x1,complex_conjugate(mps1))
+        order_1 = view_complex((size_complex(mps1)[1]**2,size_complex(mps1)[2]**2), theta_Ope_x1)
+        theta_Ope_x2 = einsum_complex("ijk,il->ljk",mps2,s2.SX().clone().detach())
+        theta_Ope_x2 = einsum_complex("ijk,ilm->jlkm",theta_Ope_x2,complex_conjugate(mps2))
+        order_2 = view_complex((size_complex(mps2)[1]**2,size_complex(mps2)[2]**2), theta_Ope_x2)
+        for i in range(1,self.N):
+            if i % 2 == 0:
+                order_1 = mm_complex(order_1,G_list_contract1)
+            else:
+                order_1 = mm_complex(order_1,G_list_contract2)
+        # Ex1*=self.N
+        for i in range(1,self.N):
+            if i % 2 == 1:
+                order_2 = mm_complex(order_2,G_list_contract1)
+            else:
+                order_2 = mm_complex(order_2,G_list_contract2)
+        # Ex2*=self.N
+        order_x = (trace_complex(order_1)+trace_complex(order_2))/norm/2
+
+        return order_x
 
     def eval_obs(self,state):
         r"""
