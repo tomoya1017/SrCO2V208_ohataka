@@ -45,6 +45,7 @@ class DQCP():
         self.gx = gx
         self.bohr=bohr
         self.h=h
+        # self.hy= * self.h
         self.hy=0.29 * self.h
         # self.hz=0.14 * self.h
         self.N=N
@@ -64,7 +65,7 @@ class DQCP():
         SS= einsum_complex(expr_kron,s2.SX(),s2.SX()) + einsum_complex(expr_kron,s2.SY(),s2.SY()) + einsum_complex(expr_kron,s2.SZ(),s2.SZ()) 
         SS= contiguous_complex(SS)
         
-        # ここも直す
+        # ここも直す ->完了
         return SSx, SSy, SSz, s2.SX(), s2.SY(), s2.SZ(), SS
 
     def get_obs_ops(self):
@@ -76,57 +77,57 @@ class DQCP():
         return obs_ops
 
     # def energy_2x2_1site(self,state):
-        mps = state.sites[(0)]
-        ######### caluculate norm in order ##########
-        # dict_norm={}
-        # first_norm = einsum_complex(("ijk,imn->jmkn",mps,complex_conjugate(mps)))
-        # small_norm = first_norm
-        # dict_norm[0] = first_norm
-        # for i in range(1,self.N):
-        #     # small_norm = einsum_complex(("ijk,imn->jmkn",m,complex_conjugate(mps)))
-        #     small_norm = einsum_complex(("ijkl,klmn->ijmn",small_norm,first_norm))
-        #     dict_norm[i] = small_norm
+        # mps = state.sites[(0)]
+        # ######### caluculate norm in order ##########
+        # # dict_norm={}
+        # # first_norm = einsum_complex(("ijk,imn->jmkn",mps,complex_conjugate(mps)))
+        # # small_norm = first_norm
+        # # dict_norm[0] = first_norm
+        # # for i in range(1,self.N):
+        # #     # small_norm = einsum_complex(("ijk,imn->jmkn",m,complex_conjugate(mps)))
+        # #     small_norm = einsum_complex(("ijkl,klmn->ijmn",small_norm,first_norm))
+        # #     dict_norm[i] = small_norm
         
-        norm1 = torch.eye(size_complex(mps)[2]**2,dtype=self.dtype,device=self.device)
-        norm2 = torch.zeros((size_complex(mps)[2]**2,size_complex(mps)[2]**2),dtype=self.dtype,device=self.device)
-        norm = torch.stack((norm1, norm2), dim=0)
-        G_list_contract = einsum_complex('ijk,imn->jmkn',mps,complex_conjugate(mps))#.reshape(G_list[j].size()[1]**2,G_list[j].size()[2]**2))
-        G_list_contract = view_complex((size_complex(mps)[1]**2,size_complex(mps)[2]**2), G_list_contract)
-        for j in range(0,self.N):
-            norm = mm_complex(norm,G_list_contract)
-        norm = trace_complex(norm)
-        theta = einsum_complex('ijk,lkm->ijlm',mps,mps)
+        # norm1 = torch.eye(size_complex(mps)[2]**2,dtype=self.dtype,device=self.device)
+        # norm2 = torch.zeros((size_complex(mps)[2]**2,size_complex(mps)[2]**2),dtype=self.dtype,device=self.device)
+        # norm = torch.stack((norm1, norm2), dim=0)
+        # G_list_contract = einsum_complex('ijk,imn->jmkn',mps,complex_conjugate(mps))#.reshape(G_list[j].size()[1]**2,G_list[j].size()[2]**2))
+        # G_list_contract = view_complex((size_complex(mps)[1]**2,size_complex(mps)[2]**2), G_list_contract)
+        # for j in range(0,self.N):
+        #     norm = mm_complex(norm,G_list_contract)
+        # norm = trace_complex(norm)
+        # theta = einsum_complex('ijk,lkm->ijlm',mps,mps)
+        # # ここを直す
+        # theta_O = einsum_complex('ijkl,kmln->imjn',(self.J*self.SSx+self.J*self.SSy+self.J*self.delta*self.SSz),theta)
+        # E = einsum_complex('ijkl,imkn->jmln',theta_O,complex_conjugate(theta))#.reshape(G_list[(j)%size].size()[1]**2,G_list[(j+1)%size].size()[2]**2)
+        # E = view_complex((size_complex(mps)[1]**2,size_complex(mps)[2]**2), E)
+        # for i in range(1,self.N-1):
+        #     E = mm_complex(E,G_list_contract)
+        # E_nn = trace_complex(E)/norm
         # ここを直す
-        theta_O = einsum_complex('ijkl,kmln->imjn',(self.J*self.SSx+self.J*self.SSy+self.J*self.delta*self.SSz),theta)
-        E = einsum_complex('ijkl,imkn->jmln',theta_O,complex_conjugate(theta))#.reshape(G_list[(j)%size].size()[1]**2,G_list[(j+1)%size].size()[2]**2)
-        E = view_complex((size_complex(mps)[1]**2,size_complex(mps)[2]**2), E)
-        for i in range(1,self.N-1):
-            E = mm_complex(E,G_list_contract)
-        E_nn = trace_complex(E)/norm
-        ここを直す
-        for i in range(self.N):
-            if (i==0):
-                Ham = einsum_complex('ijk,il->ljk',mps,(self.bohr*self.gx*self.h*self.Sx + self.bohr*self.gx*self.hy*(-1**i)*self.Sy + self.bohr*self.gx*self.hz*self.Sz*np.cos(np.pi(2*i-1)/4)))
-                Ham = einsum_complex("ljk,lml->jmkl",Ham,complex_conjugate(mps))
-                bear_mps = einsum_complex
-        theta_O = einsum_complex('ijkl,kmn->imnjl',(self.bohr*self.gx*self.h*self.Sx + self.bohr*self.gx*self.hy*self.Sy + self.bohr*self.gx*self.hz*self.Sz),mps)
-        theta_O = einsum_complex('imnjl,lab->imnjab',theta_O,mps)
-        theta_O = einsum_complex('imnjab,kna->imkjb',theta_O,mps)
-        E = einsum_complex('imkjb,ipq->pqmkjb',theta_O,complex_conjugate(mps))
-        E = einsum_complex('pqmkjb,kqja->pmab',E,complex_conjugate(theta))
-        E = view_complex((size_complex(mps)[1]**2,size_complex(mps)[2]**2), E)
-        for i in range(2,self.N-1):
-            E = mm_complex(E,G_list_contract)
-        E_nnn = trace_complex(E)/norm
+        # for i in range(self.N):
+        #     if (i==0):
+        #         Ham = einsum_complex('ijk,il->ljk',mps,(self.bohr*self.gx*self.h*self.Sx + self.bohr*self.gx*self.hy*(-1**i)*self.Sy + self.bohr*self.gx*self.hz*self.Sz*np.cos(np.pi(2*i-1)/4)))
+        #         Ham = einsum_complex("ljk,lml->jmkl",Ham,complex_conjugate(mps))
+        #         bear_mps = einsum_complex
+        # theta_O = einsum_complex('ijkl,kmn->imnjl',(self.bohr*self.gx*self.h*self.Sx + self.bohr*self.gx*self.hy*self.Sy + self.bohr*self.gx*self.hz*self.Sz),mps)
+        # theta_O = einsum_complex('imnjl,lab->imnjab',theta_O,mps)
+        # theta_O = einsum_complex('imnjab,kna->imkjb',theta_O,mps)
+        # E = einsum_complex('imkjb,ipq->pqmkjb',theta_O,complex_conjugate(mps))
+        # E = einsum_complex('pqmkjb,kqja->pmab',E,complex_conjugate(theta))
+        # E = view_complex((size_complex(mps)[1]**2,size_complex(mps)[2]**2), E)
+        # for i in range(2,self.N-1):
+        #     E = mm_complex(E,G_list_contract)
+        # E_nnn = trace_complex(E)/norm
 
-        #theta_O = einsum_complex('ji,ikl->jkl',2.0*self.SZ,mps)
-        #E = einsum_complex('ijk,imn->jmkn',theta_O,complex_conjugate(mps))#.reshape(G_list[j].size()[1]**2,G_list[j].size()[2]**2)
-        #E = view_complex((size_complex(mps)[1]**2,size_complex(mps)[2]**2), E)
-        #for i in range(1,self.N):
-        #    E = mm_complex(E,G_list_contract)
-        #E_s = trace_complex(E)/norm
+        # #theta_O = einsum_complex('ji,ikl->jkl',2.0*self.SZ,mps)
+        # #E = einsum_complex('ijk,imn->jmkn',theta_O,complex_conjugate(mps))#.reshape(G_list[j].size()[1]**2,G_list[j].size()[2]**2)
+        # #E = view_complex((size_complex(mps)[1]**2,size_complex(mps)[2]**2), E)
+        # #for i in range(1,self.N):
+        # #    E = mm_complex(E,G_list_contract)
+        # #E_s = trace_complex(E)/norm
 
-        return E_nn+E_nnn
+        # return E_nn+E_nnn
 
     def energy_2x2_2site(self,state):
         mps1 = state.sites[(0)]

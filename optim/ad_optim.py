@@ -103,19 +103,36 @@ def optimize_state(state, loss_fn, obs_fn=None, post_proc=None,
         cp_state_dict["state"][cp_opt_params["params"][0]]= cp_opt_history
         optimizer.load_state_dict(cp_state_dict)
         print(f"checkpoint.loss = {loss0}")
+    
+    prev_loss = None
 
     #@profile
     def closure():
         # 0) evaluate loss
+        nonlocal prev_loss
         optimizer.zero_grad()
         loss = loss_fn(state, context)
-
+        loss_value = loss.item()
+        if torch.isnan(loss):
+            print("WARNING: NaN detected in loss. Stopping optimization.")
+            t_data["loss"].append(float('nan'))
+            return loss  # NaNが発生したら loss を返して step を止める
+        # エネルギー差を計算
+        energy_diff = abs(prev_loss - loss_value) if prev_loss is not None else None
+        prev_loss = loss_value  # 今回のエネルギーを記録
         # 1) store current state if the loss improves
         t_data["loss"].append(loss.item())
-        if t_data["min_loss"] > t_data["loss"][-1]:
-            t_data["min_loss"]= t_data["loss"][-1]
+        if t_data["min_loss"] > loss_value:
+            # Loss improved -> Reset stable_count
+            t_data["min_loss"] = loss_value
+            t_data["stable_count"] = 0
             state.write_to_file(outputstatefile, normalize=True)
-
+        elif len(t_data["loss"]) > 1 and t_data["loss"][-2] == loss_value:
+            # Loss unchanged -> Increment stable_count
+            t_data["stable_count"] += 1
+        else:
+            # Loss increased -> Reset stable_count
+            t_data["stable_count"] = 0
         
 
         # 3) compute desired observables
@@ -129,12 +146,10 @@ def optimize_state(state, loss_fn, obs_fn=None, post_proc=None,
 
         # 5) log grad metrics for debugging
         if opt_args.opt_logging:
-            log_entry=dict({"id": epoch, "t_grad": t_grad1-t_grad0})
+            log_entry=dict({"id": epoch, "t_grad": t_grad1-t_grad0, "energy_diff": energy_diff})
             if opt_args.opt_log_grad: log_entry["grad"]= [p.grad.tolist() for p in parameters]
             log.info(json.dumps(log_entry))
-
         
-
         return loss
     
     for epoch in range(main_args.opt_max_iter):
@@ -150,6 +165,14 @@ def optimize_state(state, loss_fn, obs_fn=None, post_proc=None,
         
         if post_proc is not None:
             post_proc(state, context)
+            
+        if t_data["stable_count"] >= 20:
+            print(f"INFO: Loss has remained unchanged for 20 consecutive iterations. Stopping optimization.")
+            break
+
+        if len(t_data["loss"]) > 1 and torch.isnan(torch.tensor(t_data["loss"][-1])):
+            print("ERROR: NaN detected in loss history. Optimization terminated.")
+            break
 
     # optimization is over, store the last checkpoint
     store_checkpoint(checkpoint_file, state, optimizer, \
