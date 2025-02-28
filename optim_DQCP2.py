@@ -169,7 +169,15 @@ def main():
     state= read_ipeps(outputstatefile, vertexToSite=state.vertexToSite)
     opt_energy = energy_f(state)
     obs_values, obs_labels = model.eval_obs(state)
-    print(", ".join([f"{args.opt_max_iter}",f"{opt_energy}"]+[f"{v}" for v in obs_values]))  
+    result_line = f"{args.h}, {opt_energy}, {abs(obs_values[4] - obs_values[5]) / 2}"
+
+    # コンソール出力
+    print(result_line)
+
+    # ファイルに追記
+    with open(f"Sr_n{args.N}_chi{args.bond_dim}_result.txt", "a") as f:
+        f.write(str(result_line) + "\n")
+
 
 if __name__=='__main__':
     if len(unknown_args)>0:
