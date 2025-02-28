@@ -1,0 +1,240 @@
+INFO:__main__:Norm(sites): 5.013879766567014, 5.408192609464035
+INFO:optim.ad_optim:{"id": 0, "t_grad": 0.41205398365855217}
+INFO:__main__:Norm(sites): 5.013894529430827, 5.408205825149582
+INFO:optim.ad_optim:{"id": 1, "t_grad": 0.4012808259576559}
+INFO:__main__:Norm(sites): 5.0138926668164645, 5.408213190245271
+INFO:optim.ad_optim:{"id": 2, "t_grad": 0.41230147518217564}
+INFO:__main__:Norm(sites): 5.013909285821381, 5.408232612704567
+INFO:optim.ad_optim:{"id": 3, "t_grad": 0.4029342271387577}
+INFO:__main__:Norm(sites): 5.013936014095951, 5.408257926097804
+INFO:optim.ad_optim:{"id": 4, "t_grad": 0.4043509531766176}
+INFO:__main__:Norm(sites): 5.013948597267626, 5.408270016184199
+INFO:optim.ad_optim:{"id": 5, "t_grad": 0.40681626833975315}
+INFO:__main__:Norm(sites): 5.0139577749936, 5.408279450585275
+INFO:optim.ad_optim:{"id": 6, "t_grad": 0.40135944448411465}
+INFO:__main__:Norm(sites): 5.013967767801155, 5.408289418884245
+INFO:optim.ad_optim:{"id": 7, "t_grad": 0.40206810645759106}
+INFO:__main__:Norm(sites): 5.013973694507741, 5.408295823573184
+INFO:optim.ad_optim:{"id": 8, "t_grad": 0.4068232290446758}
+INFO:__main__:Norm(sites): 5.013982311170402, 5.408304165731208
+INFO:optim.ad_optim:{"id": 9, "t_grad": 0.40407886542379856}
+INFO:__main__:Norm(sites): 5.013984640563344, 5.408307006776232
+INFO:optim.ad_optim:{"id": 10, "t_grad": 0.4110472835600376}
+INFO:__main__:Norm(sites): 5.01398752295515, 5.408309522699165
+INFO:optim.ad_optim:{"id": 11, "t_grad": 0.4027585554867983}
+INFO:__main__:Norm(sites): 5.013989397895365, 5.408311120581797
+INFO:optim.ad_optim:{"id": 12, "t_grad": 0.40740272775292397}
+INFO:__main__:Norm(sites): 5.013990863308625, 5.408312444579579
+INFO:optim.ad_optim:{"id": 13, "t_grad": 0.40395481511950493}
+INFO:__main__:Norm(sites): 5.013993275132144, 5.408314756510963
+INFO:optim.ad_optim:{"id": 14, "t_grad": 0.40039209835231304}
+INFO:__main__:Norm(sites): 5.013997061501384, 5.408318506483076
+INFO:optim.ad_optim:{"id": 15, "t_grad": 0.4038413427770138}
+INFO:__main__:Norm(sites): 5.014003912779914, 5.40832524117824
+INFO:optim.ad_optim:{"id": 16, "t_grad": 0.4070581514388323}
+INFO:__main__:Norm(sites): 5.014009911065074, 5.408330536477862
+INFO:optim.ad_optim:{"id": 17, "t_grad": 0.409845944494009}
+INFO:__main__:Norm(sites): 5.014010982519963, 5.408331501694788
+INFO:optim.ad_optim:{"id": 18, "t_grad": 0.4022770319133997}
+INFO:__main__:Norm(sites): 5.014010959418416, 5.408331404321103
+INFO:optim.ad_optim:{"id": 19, "t_grad": 0.40727195143699646}
+INFO:__main__:Norm(sites): 5.014011683813426, 5.408331810102356
+INFO:optim.ad_optim:{"id": 20, "t_grad": 0.41275012120604515}
+INFO:__main__:Norm(sites): 5.01401566144663, 5.40833474745578
+INFO:optim.ad_optim:{"id": 21, "t_grad": 0.40098342299461365}
+INFO:__main__:Norm(sites): 5.01401795305394, 5.408336408698907
+INFO:optim.ad_optim:{"id": 22, "t_grad": 0.4052736461162567}
+INFO:__main__:Norm(sites): 5.014019617242187, 5.408337726942726
+INFO:optim.ad_optim:{"id": 23, "t_grad": 0.40387067943811417}
+INFO:__main__:Norm(sites): 5.014022037413412, 5.408339655469448
+INFO:optim.ad_optim:{"id": 24, "t_grad": 0.40068960934877396}
+INFO:__main__:Norm(sites): 5.014025396795433, 5.408342258548622
+INFO:optim.ad_optim:{"id": 25, "t_grad": 0.39975978806614876}
+INFO:__main__:Norm(sites): 5.014030496135796, 5.408346018123475
+INFO:optim.ad_optim:{"id": 26, "t_grad": 0.40438677184283733}
+INFO:__main__:Norm(sites): 5.014038572727135, 5.408352692121094
+INFO:optim.ad_optim:{"id": 27, "t_grad": 0.4029964879155159}
+INFO:__main__:Norm(sites): 5.014041066878358, 5.408354376767794
+INFO:optim.ad_optim:{"id": 28, "t_grad": 0.4089321680366993}
+INFO:__main__:Norm(sites): 5.014041759484912, 5.408354869950219
+INFO:optim.ad_optim:{"id": 29, "t_grad": 0.401953199878335}
+INFO:__main__:Norm(sites): 5.014043449294593, 5.408356191403868
+INFO:optim.ad_optim:{"id": 30, "t_grad": 0.4080969989299774}
+INFO:__main__:Norm(sites): 5.014045286320013, 5.408357551823857
+INFO:optim.ad_optim:{"id": 31, "t_grad": 0.40821305848658085}
+INFO:__main__:Norm(sites): 5.014049973127244, 5.408360783857348
+INFO:optim.ad_optim:{"id": 32, "t_grad": 0.4018931817263365}
+INFO:__main__:Norm(sites): 5.014057754137292, 5.408366278559609
+INFO:optim.ad_optim:{"id": 33, "t_grad": 0.4080578777939081}
+INFO:__main__:Norm(sites): 5.014065613004662, 5.408371417729627
+INFO:optim.ad_optim:{"id": 34, "t_grad": 0.4079764597117901}
+INFO:__main__:Norm(sites): 5.014069950108284, 5.408374377544693
+INFO:optim.ad_optim:{"id": 35, "t_grad": 0.40189583227038383}
+INFO:__main__:Norm(sites): 5.014072074294841, 5.408375750487486
+INFO:optim.ad_optim:{"id": 36, "t_grad": 0.4073122553527355}
+INFO:__main__:Norm(sites): 5.014074281025204, 5.408377283500982
+INFO:optim.ad_optim:{"id": 37, "t_grad": 0.40602497942745686}
+INFO:__main__:Norm(sites): 5.014077824932187, 5.408379619132695
+INFO:optim.ad_optim:{"id": 38, "t_grad": 0.4048257917165756}
+INFO:__main__:Norm(sites): 5.01408386989109, 5.40838378256103
+INFO:optim.ad_optim:{"id": 39, "t_grad": 0.4105808064341545}
+INFO:__main__:Norm(sites): 5.01409391312424, 5.408390473430479
+INFO:optim.ad_optim:{"id": 40, "t_grad": 0.41040789522230625}
+INFO:__main__:Norm(sites): 5.014100754902101, 5.408395034067458
+INFO:optim.ad_optim:{"id": 41, "t_grad": 0.4052941519767046}
+INFO:__main__:Norm(sites): 5.014105473653157, 5.4083982520478475
+INFO:optim.ad_optim:{"id": 42, "t_grad": 0.4068114049732685}
+INFO:__main__:Norm(sites): 5.0141113909504185, 5.408402188212613
+INFO:optim.ad_optim:{"id": 43, "t_grad": 0.4044382758438587}
+INFO:__main__:Norm(sites): 5.0141190403135845, 5.408407527375396
+INFO:optim.ad_optim:{"id": 44, "t_grad": 0.40948085114359856}
+INFO:__main__:Norm(sites): 5.014130195657175, 5.408415198470565
+INFO:optim.ad_optim:{"id": 45, "t_grad": 0.40846456214785576}
+INFO:__main__:Norm(sites): 5.014142021486334, 5.408423517432892
+INFO:optim.ad_optim:{"id": 46, "t_grad": 0.40856826305389404}
+INFO:__main__:Norm(sites): 5.0141510425901, 5.408429879022664
+INFO:optim.ad_optim:{"id": 47, "t_grad": 0.40551256388425827}
+INFO:__main__:Norm(sites): 5.014161448244538, 5.408437109489952
+INFO:optim.ad_optim:{"id": 48, "t_grad": 0.4049281310290098}
+INFO:__main__:Norm(sites): 5.01417599053546, 5.40844735395341
+INFO:optim.ad_optim:{"id": 49, "t_grad": 0.40330409817397594}
+INFO:__main__:Norm(sites): 5.0141894241061635, 5.40845649443658
+INFO:optim.ad_optim:{"id": 50, "t_grad": 0.40692622028291225}
+INFO:__main__:Norm(sites): 5.014196307867087, 5.408461262205438
+INFO:optim.ad_optim:{"id": 51, "t_grad": 0.40484120696783066}
+INFO:__main__:Norm(sites): 5.014200310051935, 5.408463924676931
+INFO:optim.ad_optim:{"id": 52, "t_grad": 0.40536966919898987}
+INFO:__main__:Norm(sites): 5.014205310615926, 5.408467368222496
+INFO:optim.ad_optim:{"id": 53, "t_grad": 0.4033206719905138}
+INFO:__main__:Norm(sites): 5.014215313066944, 5.408474184203585
+INFO:optim.ad_optim:{"id": 54, "t_grad": 0.4040709938853979}
+INFO:__main__:Norm(sites): 5.014232945610634, 5.408486647225954
+INFO:optim.ad_optim:{"id": 55, "t_grad": 0.39986217953264713}
+INFO:__main__:Norm(sites): 5.014250691798781, 5.40849899768258
+INFO:optim.ad_optim:{"id": 56, "t_grad": 0.40468015149235725}
+INFO:__main__:Norm(sites): 5.014261462619526, 5.4085067262506765
+INFO:optim.ad_optim:{"id": 57, "t_grad": 0.4068879075348377}
+INFO:__main__:Norm(sites): 5.014267965413009, 5.408511348117239
+INFO:optim.ad_optim:{"id": 58, "t_grad": 0.4085218831896782}
+INFO:__main__:Norm(sites): 5.0142750258794555, 5.4085164049773296
+INFO:optim.ad_optim:{"id": 59, "t_grad": 0.40483977645635605}
+INFO:__main__:Norm(sites): 5.014284302729821, 5.408522919110941
+INFO:optim.ad_optim:{"id": 60, "t_grad": 0.40722324699163437}
+INFO:__main__:Norm(sites): 5.014297071865464, 5.408531785956181
+INFO:optim.ad_optim:{"id": 61, "t_grad": 0.4106869325041771}
+INFO:__main__:Norm(sites): 5.014307934606286, 5.408539242583046
+INFO:optim.ad_optim:{"id": 62, "t_grad": 0.4063637927174568}
+INFO:__main__:Norm(sites): 5.014322539414658, 5.408549129058046
+INFO:optim.ad_optim:{"id": 63, "t_grad": 0.4061296842992306}
+INFO:__main__:Norm(sites): 5.014339741401965, 5.408560735315981
+INFO:optim.ad_optim:{"id": 64, "t_grad": 0.41011663153767586}
+INFO:__main__:Norm(sites): 5.014349742927198, 5.408567429292456
+INFO:optim.ad_optim:{"id": 65, "t_grad": 0.4010623972862959}
+INFO:__main__:Norm(sites): 5.014364021814387, 5.408576947061406
+INFO:optim.ad_optim:{"id": 66, "t_grad": 0.40492632426321507}
+INFO:__main__:Norm(sites): 5.0143892982305704, 5.408593666700288
+INFO:optim.ad_optim:{"id": 67, "t_grad": 0.4078102521598339}
+INFO:__main__:Norm(sites): 5.014443246703618, 5.408628882714164
+INFO:optim.ad_optim:{"id": 68, "t_grad": 0.40806714072823524}
+INFO:__main__:Norm(sites): 5.0145180204580715, 5.408676453446514
+INFO:optim.ad_optim:{"id": 69, "t_grad": 0.4067742731422186}
+INFO:__main__:Norm(sites): 5.014605249859243, 5.4087315054029945
+INFO:optim.ad_optim:{"id": 70, "t_grad": 0.40859405137598515}
+INFO:__main__:Norm(sites): 5.0146517353991396, 5.408760147037169
+INFO:optim.ad_optim:{"id": 71, "t_grad": 0.40882803685963154}
+INFO:__main__:Norm(sites): 5.014673480703047, 5.408773424139935
+INFO:optim.ad_optim:{"id": 72, "t_grad": 0.40376155264675617}
+INFO:__main__:Norm(sites): 5.014694634290779, 5.408786269593308
+INFO:optim.ad_optim:{"id": 73, "t_grad": 0.409225407987833}
+INFO:__main__:Norm(sites): 5.014753814595457, 5.408822532856017
+INFO:optim.ad_optim:{"id": 74, "t_grad": 0.40751527436077595}
+INFO:__main__:Norm(sites): 5.014864434519042, 5.4088905914989605
+INFO:optim.ad_optim:{"id": 75, "t_grad": 0.4083242807537317}
+INFO:__main__:Norm(sites): 5.015053579617037, 5.40900738683652
+INFO:optim.ad_optim:{"id": 76, "t_grad": 0.4129135459661484}
+INFO:__main__:Norm(sites): 5.015192722718558, 5.409093378536059
+INFO:optim.ad_optim:{"id": 77, "t_grad": 0.40512857772409916}
+INFO:__main__:Norm(sites): 5.015279408669566, 5.409146984505443
+INFO:optim.ad_optim:{"id": 78, "t_grad": 0.404318829998374}
+INFO:__main__:Norm(sites): 5.015336444765685, 5.409182255852617
+INFO:optim.ad_optim:{"id": 79, "t_grad": 0.4073401913046837}
+INFO:__main__:Norm(sites): 5.015410887494143, 5.409227998982607
+INFO:optim.ad_optim:{"id": 80, "t_grad": 0.40341504476964474}
+INFO:__main__:Norm(sites): 5.0155357654581785, 5.409304454513664
+INFO:optim.ad_optim:{"id": 81, "t_grad": 0.4095480553805828}
+INFO:__main__:Norm(sites): 5.015612998298743, 5.409351633352825
+INFO:optim.ad_optim:{"id": 82, "t_grad": 0.40128580667078495}
+INFO:__main__:Norm(sites): 5.0156599097570345, 5.409380120410183
+INFO:optim.ad_optim:{"id": 83, "t_grad": 0.4148860964924097}
+INFO:__main__:Norm(sites): 5.01572793230891, 5.409421797423577
+INFO:optim.ad_optim:{"id": 84, "t_grad": 0.40748260356485844}
+INFO:__main__:Norm(sites): 5.015864790236326, 5.409505704929436
+INFO:optim.ad_optim:{"id": 85, "t_grad": 0.4174983147531748}
+INFO:__main__:Norm(sites): 5.016005402154866, 5.409592429188998
+INFO:optim.ad_optim:{"id": 86, "t_grad": 0.4118379279971123}
+INFO:__main__:Norm(sites): 5.016122995222508, 5.4096649958408625
+INFO:optim.ad_optim:{"id": 87, "t_grad": 0.41571272909641266}
+INFO:__main__:Norm(sites): 5.016215841927527, 5.409722430449332
+INFO:optim.ad_optim:{"id": 88, "t_grad": 0.41771702095866203}
+INFO:__main__:Norm(sites): 5.016336964883721, 5.409797295280072
+INFO:optim.ad_optim:{"id": 89, "t_grad": 0.4147938657552004}
+INFO:__main__:Norm(sites): 5.016550034962293, 5.409929478418007
+INFO:optim.ad_optim:{"id": 90, "t_grad": 0.41644720174372196}
+INFO:__main__:Norm(sites): 5.016715625298845, 5.410032854921779
+INFO:optim.ad_optim:{"id": 91, "t_grad": 0.41007639840245247}
+INFO:__main__:Norm(sites): 5.01680015718268, 5.410086172871802
+INFO:optim.ad_optim:{"id": 92, "t_grad": 0.41135774180293083}
+INFO:__main__:Norm(sites): 5.016840952231652, 5.410112350783111
+INFO:optim.ad_optim:{"id": 93, "t_grad": 0.4161557350307703}
+INFO:__main__:Norm(sites): 5.01688924519657, 5.410143305470809
+INFO:optim.ad_optim:{"id": 94, "t_grad": 0.4192194249480963}
+INFO:__main__:Norm(sites): 5.017002451157096, 5.4102155710133495
+INFO:optim.ad_optim:{"id": 95, "t_grad": 0.4156133010983467}
+INFO:__main__:Norm(sites): 5.017199185741655, 5.410341331593079
+INFO:optim.ad_optim:{"id": 96, "t_grad": 0.41085326857864857}
+INFO:__main__:Norm(sites): 5.017491642117805, 5.410530356055473
+INFO:optim.ad_optim:{"id": 97, "t_grad": 0.41642372496426105}
+INFO:__main__:Norm(sites): 5.017646328395497, 5.410632404320635
+INFO:optim.ad_optim:{"id": 98, "t_grad": 0.4053290504962206}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 99, "t_grad": 0.4055570885539055}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 100, "t_grad": 0.4085872322320938}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 101, "t_grad": 0.4060951694846153}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 102, "t_grad": 0.40847778506577015}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 103, "t_grad": 0.41052811220288277}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 104, "t_grad": 0.4081067871302366}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 105, "t_grad": 0.40777501091361046}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 106, "t_grad": 0.4061971064656973}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 107, "t_grad": 0.4134578872472048}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 108, "t_grad": 0.4042488615959883}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 109, "t_grad": 0.41036318987607956}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 110, "t_grad": 0.41021378338336945}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 111, "t_grad": 0.404757721349597}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 112, "t_grad": 0.4086697567254305}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 113, "t_grad": 0.41000331938266754}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 114, "t_grad": 0.4102010913193226}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 115, "t_grad": 0.4082518722862005}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 116, "t_grad": 0.41187743470072746}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 117, "t_grad": 0.40902272425591946}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 118, "t_grad": 0.41202580742537975}
+INFO:__main__:Norm(sites): 5.0177714137244225, 5.410712618235508
+INFO:optim.ad_optim:{"id": 119, "t_grad": 0.40129222348332405}
