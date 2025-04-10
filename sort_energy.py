@@ -18,17 +18,35 @@ import logging
 log = logging.getLogger(__name__)
 import json
 import glob
+import re
 
-N=8
-chi = 20
-ex_bx = 0
+
+N=128
+chi = 10
+ex_bx = 0.175
 # JSON ファイルのパスを取得
-json_files = glob.glob('ene_with_state_{}bond__{}site_h{}_k*.json'.format(chi,N,ex_bx))
+# filtered_files = glob.glob("ene_with_state_n{}_with_128ini_{}bond_h{}_k*.json".format(N,chi,ex_bx))
+# 正規表現パターン（k が偶数 & `_mpi4.json` 付き/なし）
+# pattern = r"ene_with_state_n{}_with_128ini_{}bond_h{}_k(\d+)_mpi4.json".format(N, chi, ex_bx)
 
-# 全ての JSON ファイルを読み込み、辞書に結合
+# ファイルリスト取得
+filtered_files = glob.glob("ene_with_state_n{}_with_128ini_{}bond_h{}_k*_mpi4.json".format(N, chi, ex_bx))
+
+# 条件に合うデータを格納
+# filtered_files = []
+
+# JSON ファイルをフィルタリング
+# for file in json_files:
+#     match = re.match(pattern, file)
+#     if match:
+#         k = int(match.group(1))  # k の数値部分を取得
+#         if k in [0, 2, 4, 6,8,10,12,14]:  # k が 0, 2, 4, 6 の場合のみ対象
+#             filtered_files.append(file)
+
+# 結果を出力
 all_data = []
 i=0
-for file in json_files:
+for file in filtered_files:
     print(file)
     i+=1
     with open(file, 'r') as f:
@@ -42,5 +60,5 @@ sorted_all_data = sorted(all_data,key=lambda x: x["ene"])
 print(len(all_data))
  
 # 結合されたデータを新しい JSON ファイルに保存
-with open('sorted_combined_{}bond_{}site_h{}.json'.format(chi,N,ex_bx), 'w') as f:
+with open('Sr_sorted_combined_n{}_with_n128ini_{}bond_h{}_even.json'.format(N,chi,ex_bx), 'w') as f:
     json.dump(sorted_all_data, f, indent=1, ensure_ascii=False)
